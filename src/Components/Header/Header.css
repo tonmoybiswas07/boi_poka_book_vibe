@@ -1,0 +1,6 @@
+nav a.active {
+  border: 2px solid #23be0a;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+}
