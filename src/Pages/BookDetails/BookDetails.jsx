@@ -1,5 +1,7 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import { addToStoredDB } from "../../Utility/AddToDB";
+import Swal from "sweetalert2";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -16,42 +18,14 @@ const BookDetails = () => {
     yearOfPublishing,
     rating,
   } = singleBooks;
-  console.log(singleBooks);
-
-  //   author
-  // :
-  // "Harper Lee"
-  // bookId
-  // :
-  // 2
-  // bookName
-  // :
-  // "To Kill a Mockingbird"
-  // category
-  // :
-  // "Fiction"
-  // image
-  // :
-  // "https://i.ibb.co.com/0cv102J/To-Kill-a-Mockingbird.webp"
-  // publisher
-  // :
-  // "J.B. Lippincott & Co."
-  // rating
-  // :
-  // 4.8
-  // review
-  // :
-  // "'The Great Gatsby' by F. Scott Fitzgerald is a timeless masterpiece that delves into the decadence and disillusionment of the Jazz Age. Set in the Roaring Twenties, the novel unveils the enigmatic Jay Gatsby's extravagant parties, masking a pursuit of lost love. Narrated by Nick Carraway, the story explores themes of wealth, love, and the American Dream, drawing readers into a vivid portrayal of the glittering yet elusive world of the East and West Egg. Fitzgerald's prose is both poetic and haunting, weaving a compelling narrative that transcends its era. A poignant exploration of societal excess and the human condition, 'The Great Gatsby' remains a literary gem that resonates across generations."
-  // tags
-  // :
-  // (2) ['Drama', 'Social Justice']
-  // totalPages
-  // :
-  // 281
-  // yearOfPublishing
-  // :
-  // 1960
-
+  const handleMark = (id) => {
+    Swal.fire({
+      title: "Good job!",
+      text: "You added new book",
+      icon: "success",
+    });
+    addToStoredDB(id);
+  };
   return (
     <div className="flex justify-center items-center gap-10 my-10  ">
       <div className="bg-gray-200 rounded-2xl w-1/2">
@@ -98,7 +72,10 @@ const BookDetails = () => {
           </h3>
         </div>
         <div className="mt-4">
-          <button className="btn px-5 border-2 border-gray-500 mr-5 rounded-md">
+          <button
+            onClick={() => handleMark(id)}
+            className="btn px-5 border-2 border-gray-500 mr-5 rounded-md"
+          >
             Read
           </button>
           <button className="btn px-5 bg-[#50B1C9] text-white rounded-md">

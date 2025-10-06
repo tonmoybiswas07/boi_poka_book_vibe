@@ -6,10 +6,12 @@ const Header = () => {
   const links = (
     <>
       <nav>
-        <NavLink to="" className="mr-7">
+        <NavLink to="/" className="mr-7">
           Home
         </NavLink>
-        <NavLink className="mr-7">Listed Books</NavLink>
+        <NavLink to="readList" className="mr-7">
+          Listed Books
+        </NavLink>
         <NavLink>Pages to Read</NavLink>
       </nav>
     </>
